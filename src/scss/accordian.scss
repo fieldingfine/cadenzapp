@@ -80,6 +80,10 @@ input {
     background: $font;
     transition: all .35s;
     color: $font2;
+    // & div:first-of-type {
+    //   font-weight: 600;
+    //   margin-bottom: 1em;
+    // }
   }
   &-close {
     display: flex;

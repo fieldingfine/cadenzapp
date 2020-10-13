@@ -22,8 +22,10 @@ function Header (props) {
           .then( response => setStats(response.data.all_run_totals))
           .catch( error => console.log('header error',error))
         };
+
       if(typeof props.auth !== "undefined"){getAthlete();getAthleteStats();} 
       setTimeout(() => setLoading(false), 2000);
+
     }, [props.auth]);
     
 
@@ -34,10 +36,8 @@ function Header (props) {
         <header>
           <img src='https://pbs.twimg.com/profile_images/1036876528657813504/WLq-d1X9_400x400.jpg' alt='profile'></img>
           <h1 className='title'>kick {data.username}</h1>
-    
           <p>total runs: {stats.count}</p>
           <p>total kilometers: {parseInt(stats.distance / 1000).toLocaleString()} km</p>  
-     
        </header>
         ) : (
           <header>

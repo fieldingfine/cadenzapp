@@ -39,7 +39,7 @@ const postRefresh = (response) => {
       },
       data : JSON.stringify({"records":[{"id":"recPtaP7rRYatGese","fields":{"auth": response.access_token ,"refresh": response.refresh_token ,"exp": (Date.now() + (response.expires_in * 1000))}}]})
     };
-  axios(config)
+    axios(config)
       .then(getTokens())
       .catch( error => console.log(error));
 };
@@ -59,14 +59,14 @@ getTokens()
 
   return (
       <div className='container'>
-      <Header auth={auth}/>
+        <Header auth={auth}/>
       <section>
-      <NextSessions header={airtableHeader} />
-      <LatestRuns auth={auth} />
-      <Races header={airtableHeader} />
+        <NextSessions header={airtableHeader} />
+        <LatestRuns auth={auth} />
+        <Races header={airtableHeader} />
       </section>
       <section>
-      <Graph header={airtableHeader}/>
+       <Graph header={airtableHeader}/>
       </section>
     </div>
   );

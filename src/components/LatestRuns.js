@@ -44,7 +44,7 @@ const [loading, setLoading] = useState(true)
         <label className="tab-label" htmlFor={runs.id}>{runs.name}</label>
         <div className="tab-content">
         <div className='inner'>
-            <p>{runs.description}</p>
+          <p>{runs.description}</p>
             <p><strong>Date:</strong> {runs.start_date.substring(0, 10)}</p> 
           <p><strong>KM:</strong>  {(runs.distance / 1000).toFixed(2)}</p>
           <p><strong>KPH:</strong> {(runs.average_speed * 3.6).toFixed(2)} kph </p>
@@ -62,10 +62,10 @@ const [loading, setLoading] = useState(true)
     <>
     {loading === false ? (
       <div className='cbox'>
-    <div className='tabtitle'><span className='tabicon' role="img" aria-label="tick">👍</span><p className='tabtitle'>previous sessions</p><p className='tabsubtitle'>(last 10 sessions)</p></div>
-    <div className="tabs">
-    {tabContent}
-    </div>
+        <div className='tabtitle'><span className='tabicon' role="img" aria-label="tick">👍</span><p className='tabtitle'>previous sessions</p><p className='tabsubtitle'>(last 10 sessions)</p></div>
+        <div className="tabs">
+        {tabContent}
+        </div>
   </div>
       ) : (
         <div className='cbox'>

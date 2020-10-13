@@ -26,7 +26,9 @@ const [loading, setLoading] = useState(true)
           }
           ))))
          .catch( error => console.log('graph error', error))
-setTimeout(() => setLoading(false), 2000)
+
+    setTimeout(() => setLoading(false), 2000)
+    
   },[props.header]);
 
 //change graph data on click//
@@ -48,19 +50,19 @@ setTimeout(() => setLoading(false), 2000)
         <div className={ (graph === 'load (km)') ? 'graphnav active' : 'graphnav' } onClick={() => {handleClick('load (km)');}} ><span className='tabicon' role="img" aria-label="up down">↕️</span><p>load tracker</p></div>
         </div>
 
-    <ResponsiveContainer  width={'100%'} height={300} className='graph'>
-      <LineChart
-        data={data}
-        margin={{
-          top: 50, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <XAxis dataKey="date" stroke="white"/>
-        <YAxis type="number" domain={domain} stroke="white" />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey={graph} stroke={color}  strokeWidth={3}  activeDot={{ r: 8 }}  />
-      </LineChart>
+      <ResponsiveContainer  width={'100%'} height={300} className='graph'>
+        <LineChart
+          data={data}
+          margin={{
+            top: 50, right: 30, left: 20, bottom: 5,
+          }}
+        >
+          <XAxis dataKey="date" stroke="white"/>
+          <YAxis type="number" domain={domain} stroke="white" />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey={graph} stroke={color}  strokeWidth={3}  activeDot={{ r: 8 }}  />
+        </LineChart>
       </ResponsiveContainer>
       </div>
       ) : (
@@ -70,8 +72,5 @@ setTimeout(() => setLoading(false), 2000)
       </>
 );
   }
-
-  
-  
 
 export default Graph;
