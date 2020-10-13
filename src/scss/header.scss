@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2em 0 2em 0;
+    & img{
+        max-width: 125px;
+        margin: auto;
+        }
+    & p {
+        text-align: center;
+        margin: 0px;
+        }
+}
+

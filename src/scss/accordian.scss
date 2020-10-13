@@ -1,0 +1,115 @@
+$midnight: #4056A1;
+$font:rgba(255, 255, 255, 0.6);
+$font2: #2C2C2C;
+
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tabtitle {
+    text-align:center;
+    & p:first-of-type{
+    margin-bottom: 0px;
+    }
+    & p:last-of-type{
+        margin-top: 0px;
+        }
+    }
+
+// Layout
+.row {
+  display:flex;
+  .col {
+    flex:1;
+    &:last-child {
+      margin-left: 1em;
+    }
+  }
+}
+/* Accordion styles */
+.tabs {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+}
+.inner > p:first-of-type {
+    margin: 0px
+}
+.stravabtn {
+    color: #fc4c02;
+    opacity: 0.9;
+    cursor: pointer;
+    text-decoration: underline;
+   }
+
+.tab {
+  width: 100%;
+  color: $font;
+  overflow: hidden;
+  &:last-of-type > .tab-label {
+    border-bottom: 0px;
+}
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background: $midnight;
+    border-bottom: 1px solid $font;
+    line-height: 1.25em;
+    cursor: pointer;
+    /* Icon */
+    &:hover {
+      background: darken($midnight, 10%);
+    }
+    &:hover {
+      background: darken($midnight, 10%);
+    }
+    &::after {
+      content: "\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all .35s;
+    }
+  }
+  &-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: $midnight;
+    background: $font;
+    transition: all .35s;
+    color: $font2;
+  }
+  &-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background: $midnight;
+    cursor: pointer;
+    &:hover {
+      background: darken($midnight, 10%);
+    }
+  }
+}
+
+// :checked
+input:checked {
+  + .tab-label {
+    background: darken($midnight, 10%);
+    font-weight: 600;
+    color: white;
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .tab-content {
+    max-height: 100vh;
+    padding: 1em;
+    color: $font2;
+  }
+}
+
+
+

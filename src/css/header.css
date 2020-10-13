@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2em 0 2em 0;
+}
+header img {
+  max-width: 125px;
+  margin: auto;
+}
+header p {
+  text-align: center;
+  margin: 0px;
+}
+
+/*# sourceMappingURL=header.css.map */

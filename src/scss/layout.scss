@@ -1,0 +1,29 @@
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 3em;
+  }
+
+  .cbox {
+    flex-basis: 350px;
+    margin: 3em;
+  }
+  
+.gbox {
+    width: 90%;
+}
+
+@media only screen and (max-width: 600px) {
+  .container, .gbox {
+    width: 100%;
+  }
+  .cbox {
+    margin: 2em 1em 2em 1em;
+  }
+}
