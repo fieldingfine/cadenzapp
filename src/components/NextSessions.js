@@ -8,6 +8,7 @@ const [plan, setPlan] = useState([]);
 const [loading, setLoading] = useState(true)
 
 
+//get data for sessions//
 useEffect(() => {
   axios.get('https://api.airtable.com/v0/appCxNHOlPKoOiFeE/training/?sort%5B0%5D%5Bfield%5D=date', props.header)
   .then( response => setPlan(response.data.records))
@@ -15,7 +16,7 @@ useEffect(() => {
 setTimeout(() => setLoading(false), 2000);
 }, [props.header]);
 
-  
+//only map the next 10 sessions by date //
   let tabLinks = plan.map((planIt) => {
     let today = Date.now();
     let week = today + 864000000;

@@ -8,11 +8,14 @@ const [activity, setActivity] = useState([]);
 const [loading, setLoading] = useState(true)
 
 
+//get data for strava runs//
   useEffect(() => { 
-    const getTraining = () => { //strava//
+    const getTraining = () => {
+      //get data ids of last runs//
       axios.get("https://www.strava.com/api/v3/athlete/activities?per_page=10", {headers: { Authorization: 'Bearer ' + props.auth}})
         .then(response => {return response.data;})
         .catch(error => console.log(error))
+         //use ids to get detail of each run//
         .then(async data => {
             await Promise.all(data.map((e, index, array) => {
                 return axios.get('https://www.strava.com/api/v3/activities/' + e.id + '?include_all_efforts=false', {headers: { Authorization: 'Bearer ' + props.auth}})
@@ -29,6 +32,7 @@ const [loading, setLoading] = useState(true)
 
   }, [props.auth]);
 
+  //handle clicks on strava links//
   const stravaLink = (id) => { 
     window.open(`https://www.strava.com/activities/${id}`,"_blank", "toolbar=no,scrollbars=yes,resizable=yes,top=10,left=50,width=800,height=400");
   };
@@ -40,7 +44,6 @@ const [loading, setLoading] = useState(true)
         <label className="tab-label" htmlFor={runs.id}>{runs.name}</label>
         <div className="tab-content">
         <div className='inner'>
-		        {/* <h3>{runs.name}</h3> */}
             <p>{runs.description}</p>
             <p><strong>Date:</strong> {runs.start_date.substring(0, 10)}</p> 
           <p><strong>KM:</strong>  {(runs.distance / 1000).toFixed(2)}</p>

@@ -8,7 +8,7 @@ const Races = (props) => {
 const [races, setRaces] = useState([]); 
 const [loading, setLoading] = useState(true)
 
-
+//get data for races//
 useEffect(() => {
   axios.get('https://api.airtable.com/v0/app51Ub4aBrwWISd5/races/?view=Grid%20view', props.header)
   .then( response => setRaces(response.data.records))
@@ -17,7 +17,7 @@ setTimeout(() => setLoading(false), 2000);
 }, [props.header]);
 
 
-
+//map data for races//
   let raceTable = races.map((planIt) => {
         return (
           <div className="tab races" key={planIt.id}>
@@ -25,7 +25,6 @@ setTimeout(() => setLoading(false), 2000);
           <label className="tab-label" htmlFor={planIt.id}>{planIt.fields.Race}</label>
           <div className="tab-content">
           <div className='inner'>
-              {/* <h3>{planIt.fields.Race}</h3> */}
             <p><strong>Venue:</strong> {planIt.fields.Venue}</p> 
             <p><strong>Date:</strong> {planIt.fields.NewDate}</p> 
             <p><strong>Event:</strong> {planIt.fields.Event}</p>

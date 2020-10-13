@@ -9,15 +9,15 @@ function Header (props) {
 
   
 
-
+//get data for header stats//
     useEffect(() => { 
-      const getAthlete = () => { //strava//
+      const getAthlete = () => { 
         axios.get(`https://www.strava.com/api/v3/athletes/3118597?access_token=${props.auth}`)
             .then(function (response) {setData(response.data);})
             .catch(function (error) {console.log(error);}) 
           };
       
-      const getAthleteStats = () => { //strava get athlete stats//
+      const getAthleteStats = () => { 
         axios.get(`https://www.strava.com/api/v3/athletes/3118597/stats`, {headers: { 'Authorization': `Bearer ${props.auth}`}})
           .then( response => setStats(response.data.all_run_totals))
           .catch( error => console.log('header error',error))

@@ -12,22 +12,24 @@ import Graph from './Graph';
 function App() {
 const [auth, setAuth] = useState(); 
 
-  
+//hold refresh token for post
 let refresh;
 
-//airtable header//------
+//airtable header for databse calls//
 const airtableHeader = {headers: { 'Authorization': `Bearer keyLEVUsiVxM15Nsg`, 'Content-Type': 'application/json'}} ;
 
-//axios calls//------
+
+// TOKEN MANAGEMENT FOR STRAVA CALLS //
   
- const getRefresh = () => { //strava get refresh token//
+//getRefresh: get refresh token when expired//
+ const getRefresh = () => { //refresh token when expired
   axios.post(`https://www.strava.com/api/v3/oauth/token?client_id=53708&client_secret=29f1f915569b51a2890df9a07a5d4c6443134819&grant_type=refresh_token&refresh_token=${refresh}`)
     .then(response => postRefresh(response.data))
     .catch(error => console.log(error));
 };
 
-
-const postRefresh = (response) => { //airtable//
+//postRefresh: posting new token to database//
+const postRefresh = (response) => { 
   var config = {
     method: 'put',
     url: 'https://api.airtable.com/v0/appB944pnqlNcrQda/kicktokens',
@@ -42,7 +44,8 @@ const postRefresh = (response) => { //airtable//
       .catch( error => console.log(error));
 };
 
-const getTokens = async () => { //airtable//
+//getTokens = getting latest token from data base, check if expired. If so, request and post refresh//
+const getTokens = async () => { 
      await axios.get("https://api.airtable.com/v0/appB944pnqlNcrQda/kicktokens/recPtaP7rRYatGese", airtableHeader)
       .then( response => {
           setAuth(response.data.fields.auth);
