@@ -27,7 +27,7 @@ const activities = {
 
 const Graph = (props) => {
   const [data, setData] = useState([]);
-  const [activity, setActivity] = useState('booze');
+  const [activity, setActivity] = useState('weight');
   const [loading, setLoading] = useState(true);
   const selectedActivity = activities[activity];
 
@@ -59,12 +59,7 @@ const Graph = (props) => {
     <>
       <div className="gbox">
         <div className="nav">
-          <div
-            className={activity === 'weight' ? 'graphnav active' : 'graphnav'}
-            onClick={() => {
-              setActivity('weight');
-            }}
-          >
+          <div className={activity === 'weight' ? 'graphnav active' : 'graphnav'} onClick={() => setActivity('weight')}>
             <span className="tabicon" role="img" aria-label="scales">
               ⚖️
             </span>
@@ -72,32 +67,20 @@ const Graph = (props) => {
           </div>
           <div
             className={activity === 'fitness' ? 'graphnav active' : 'graphnav'}
-            onClick={() => {
-              setActivity('fitness');
-            }}
+            onClick={() => setActivity('fitness')}
           >
             <span className="tabicon" role="img" aria-label="heart">
               💜
             </span>
             <p>fitness tracker</p>
           </div>
-          <div
-            className={activity === 'booze' ? 'graphnav active' : 'graphnav'}
-            onClick={() => {
-              setActivity('booze');
-            }}
-          >
+          <div className={activity === 'booze' ? 'graphnav active' : 'graphnav'} onClick={() => setActivity('booze')}>
             <span className="tabicon" role="img" aria-label="beer">
               🍺
             </span>
             <p>booze tracker</p>
           </div>
-          <div
-            className={activity === 'load' ? 'graphnav active' : 'graphnav'}
-            onClick={() => {
-              setActivity('load');
-            }}
-          >
+          <div className={activity === 'load' ? 'graphnav active' : 'graphnav'} onClick={() => setActivity('load')}>
             <span className="tabicon" role="img" aria-label="up down">
               ↕️
             </span>
