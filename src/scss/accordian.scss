@@ -1,27 +1,22 @@
-$midnight: #4056A1;
-$font:rgba(255, 255, 255, 0.6);
-$font2: #2C2C2C;
+$midnight: #4056a1;
+$font: rgba(255, 255, 255, 0.6);
+$font2: #2c2c2c;
 
-input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
 .tabtitle {
-    text-align:center;
-    & p:first-of-type{
+  text-align: center;
+  & p:first-of-type {
     margin-bottom: 0px;
-    }
-    & p:last-of-type{
-        margin-top: 0px;
-        }
-    }
+  }
+  & p:last-of-type {
+    margin-top: 0px;
+  }
+}
 
 // Layout
 .row {
-  display:flex;
+  display: flex;
   .col {
-    flex:1;
+    flex: 1;
     &:last-child {
       margin-left: 1em;
     }
@@ -30,26 +25,30 @@ input {
 /* Accordion styles */
 .tabs {
   border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+  // overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+  &-loading {
+    padding: 10px 0 10px;
+    text-align: center;
+    opacity: 0.5;
+  }
 }
 .inner > p:first-of-type {
-    margin: 0px
+  margin: 0px;
 }
 .stravabtn {
-    color: #fc4c02;
-    opacity: 0.9;
-    cursor: pointer;
-    text-decoration: underline;
-   }
+  color: #fc4c02;
+  opacity: 0.9;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 .tab {
   width: 100%;
   color: $font;
-  overflow: hidden;
   &:last-of-type > .tab-label {
     border-bottom: 0px;
-}
+  }
   &-label {
     display: flex;
     justify-content: space-between;
@@ -58,62 +57,34 @@ input {
     border-bottom: 1px solid $font;
     line-height: 1.25em;
     cursor: pointer;
-    /* Icon */
-    &:hover {
-      background: darken($midnight, 10%);
-    }
-    &:hover {
-      background: darken($midnight, 10%);
-    }
-    &::after {
-      content: "\276F";
-      width: 1em;
-      height: 1em;
-      text-align: center;
-      transition: all .35s;
-    }
   }
   &-content {
-    max-height: 0;
     padding: 0 1em;
     color: $midnight;
     background: $font;
-    transition: all .35s;
-    color: $font2;
-    // & div:first-of-type {
-    //   font-weight: 600;
-    //   margin-bottom: 1em;
-    // }
-  }
-  &-close {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
-    font-size: 0.75em;
-    background: $midnight;
-    cursor: pointer;
-    &:hover {
-      background: darken($midnight, 10%);
-    }
-  }
-}
-
-// :checked
-input:checked {
-  + .tab-label {
-    background: darken($midnight, 10%);
-    font-weight: 600;
-    color: white;
-    &::after {
-      transform: rotate(90deg);
-    }
-  }
-  ~ .tab-content {
-    max-height: 100vh;
-    padding: 1em;
+    transition: all 0.35s;
     color: $font2;
   }
 }
 
+details > summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
 
+summary::after {
+  content: "❯";
+  font-size: 1em;
+}
+details[open] summary:after {
+  transform: rotate(90deg);
+}
 
+summary {
+  animation: fadein 0s;
+  -moz-animation: fadein 0s; /* Firefox */
+  -webkit-animation: fadein 0s; /* Safari and Chrome */
+  -o-animation: fadein 0s; /* Opera */
+}

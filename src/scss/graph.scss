@@ -1,16 +1,14 @@
 .nav {
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    flex-wrap: wrap;
-  }
-
-.graphnav {
-    cursor: pointer;
-    flex-basis: 125px;
-    &.active {
-        border-bottom: 2px solid #4056A1;   
-    }
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-
+.graphnav {
+  cursor: pointer;
+  flex-basis: 125px;
+  &.active {
+    border-bottom: 2px solid #4056a1;
+  }
+}

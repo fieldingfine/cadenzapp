@@ -1,4 +1,8 @@
-* {
+.cbox,
+.fbox,
+header,
+.tabs,
+body {
   animation: fadein 2s;
   -moz-animation: fadein 2s;
   /* Firefox */

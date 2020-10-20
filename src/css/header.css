@@ -12,5 +12,10 @@ header p {
   text-align: center;
   margin: 0px;
 }
+header .loading {
+  padding: 10px 0 10px;
+  text-align: center;
+  opacity: 0.5;
+}
 
 /*# sourceMappingURL=header.css.map */

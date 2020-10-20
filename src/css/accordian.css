@@ -1,10 +1,4 @@
 @charset "UTF-8";
-input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-
 .tabtitle {
   text-align: center;
 }
@@ -28,8 +22,12 @@ input {
 /* Accordion styles */
 .tabs {
   border-radius: 2px;
-  overflow: hidden;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+.tabs-loading {
+  padding: 10px 0 10px;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .inner > p:first-of-type {
@@ -46,7 +44,6 @@ input {
 .tab {
   width: 100%;
   color: rgba(255, 255, 255, 0.6);
-  overflow: hidden;
 }
 .tab:last-of-type > .tab-label {
   border-bottom: 0px;
@@ -55,57 +52,44 @@ input {
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  background: #4056A1;
+  background: #4056a1;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   line-height: 1.25em;
   cursor: pointer;
-  /* Icon */
-}
-.tab-label:hover {
-  background: #31437d;
-}
-.tab-label:hover {
-  background: #31437d;
-}
-.tab-label::after {
-  content: "❯";
-  width: 1em;
-  height: 1em;
-  text-align: center;
-  transition: all 0.35s;
 }
 .tab-content {
-  max-height: 0;
   padding: 0 1em;
-  color: #4056A1;
+  color: #4056a1;
   background: rgba(255, 255, 255, 0.6);
   transition: all 0.35s;
-  color: #2C2C2C;
-}
-.tab-close {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1em;
-  font-size: 0.75em;
-  background: #4056A1;
-  cursor: pointer;
-}
-.tab-close:hover {
-  background: #31437d;
+  color: #2c2c2c;
 }
 
-input:checked + .tab-label {
-  background: #31437d;
-  font-weight: 600;
-  color: white;
+details > summary {
+  list-style: none;
 }
-input:checked + .tab-label::after {
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "❯";
+  font-size: 1em;
+}
+
+details[open] summary:after {
   transform: rotate(90deg);
 }
-input:checked ~ .tab-content {
-  max-height: 100vh;
-  padding: 1em;
-  color: #2C2C2C;
+
+summary {
+  animation: fadein 0s;
+  -moz-animation: fadein 0s;
+  /* Firefox */
+  -webkit-animation: fadein 0s;
+  /* Safari and Chrome */
+  -o-animation: fadein 0s;
+  /* Opera */
 }
 
 /*# sourceMappingURL=accordian.css.map */
