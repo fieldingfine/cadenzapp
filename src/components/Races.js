@@ -3,15 +3,11 @@ import { fetchRaces } from "./api";
 
 const Races = () => {
   const [races, setRaces] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   //get data for races//
   useEffect(() => {
     fetchRaces().then((response) => {
       setRaces(response);
     });
-
-    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   //map data for races//
@@ -47,7 +43,7 @@ const Races = () => {
 
   return (
     <>
-      {loading === false ? (
+      {Object.keys(races).length > 0 ? (
         <div className='cbox'>
           <div className='tabtitle'>
             <span className='tabicon' role='img' aria-label='race flag'>

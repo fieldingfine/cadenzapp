@@ -2,7 +2,8 @@
 .fbox,
 header,
 .tabs,
-body {
+body,
+header > p {
   animation: fadein 2s;
   -moz-animation: fadein 2s;
   /* Firefox */

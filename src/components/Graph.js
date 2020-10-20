@@ -15,15 +15,12 @@ const Graph = () => {
   const [graph, setGraph] = useState("weight (kg)");
   const [domain, setDomain] = useState([59, 63]);
   const [color, setColor] = useState("#4056A1");
-  const [loading, setLoading] = useState(true);
 
   //get data for graph//
   useEffect(() => {
     fetchStats().then((response) => {
       setData(response);
     }, []);
-
-    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   //change graph data on click//
@@ -48,7 +45,7 @@ const Graph = () => {
   };
   return (
     <>
-      {loading === false ? (
+      {Object.keys(data).length > 0 ? (
         <div className='gbox'>
           <div className='nav'>
             <div

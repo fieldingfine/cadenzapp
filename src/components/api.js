@@ -158,7 +158,6 @@ export async function getTraining() {
             .catch((error) => console.log(error, "tis me"));
         })
       );
-      console.log(data);
       return data;
     })
     .catch((error) => console.log(error, "get training error"));

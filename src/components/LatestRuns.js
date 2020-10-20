@@ -3,18 +3,14 @@ import { getTraining } from "./api";
 
 const LatestRuns = () => {
   const [activity, setActivity] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   //get data for strava runs//
   useEffect(() => {
     getTraining().then((response) => {
-      console.log(response, "checkit");
       if (response !== undefined) {
         setActivity(response);
       }
     });
-
-    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   //handle clicks on strava links//

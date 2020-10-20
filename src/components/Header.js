@@ -4,7 +4,6 @@ import { getAthlete, getAthleteStats } from "./api";
 function Header() {
   const [stats, setStats] = useState([]);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   //get data for header stats//
   useEffect(() => {
@@ -19,8 +18,6 @@ function Header() {
         setStats(response.data.all_run_totals);
       }
     });
-
-    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   return (
@@ -33,20 +30,17 @@ function Header() {
           <h1 className='title'>kick {data.username}</h1>
           <p>total runs: {stats.count}</p>
           <p>
-            total kilometers: {parseInt(stats.distance / 1000).toLocaleString()}{" "}
+            total kilometers: {parseInt(stats.distance / 1000).toLocaleString()}
             km
           </p>
         </header>
       ) : (
         <header>
-          {" "}
-          <header>
-            <img
-              src='https://pbs.twimg.com/profile_images/1036876528657813504/WLq-d1X9_400x400.jpg'
-              alt='profile'></img>
-            <h1 className='title'>kick</h1>
-            <p className='loading'>strava stats loading...</p>
-          </header>
+          <img
+            src='https://pbs.twimg.com/profile_images/1036876528657813504/WLq-d1X9_400x400.jpg'
+            alt='profile'></img>
+          <h1 className='title'>kick</h1>
+          <p className='loading'>strava stats loading...</p>
         </header>
       )}
     </>

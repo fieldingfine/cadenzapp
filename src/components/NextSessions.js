@@ -3,15 +3,12 @@ import { fetchTraining } from "./api";
 
 const NextSessions = () => {
   const [plan, setPlan] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   //get data for sessions//
   useEffect(() => {
     fetchTraining().then((response) => {
       setPlan(response);
     });
-
-    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   let today = Date.now();
@@ -39,7 +36,7 @@ const NextSessions = () => {
 
   return (
     <>
-      {loading === false ? (
+      {Object.keys(plan).length > 0 ? (
         <div className='cbox'>
           <div className='tabtitle'>
             <span className='tabicon' role='img' aria-label='tick'>
