@@ -10,7 +10,6 @@ function Header() {
     getAthlete().then((response) => {
       if (response !== undefined) {
         setData(response.data);
-        console.log(response.data);
       }
     });
 
@@ -25,10 +24,8 @@ function Header() {
     <>
       {Object.keys(stats).length > 0 && Object.keys(data).length > 0 ? (
         <header>
-          <img
-            src='https://pbs.twimg.com/profile_images/1036876528657813504/WLq-d1X9_400x400.jpg'
-            alt='profile'></img>
-          <h1 className='title'>kick {data.username}</h1>
+          <img src='https://i.ibb.co/jvcRkBz/cadenz.png' alt='profile'></img>
+          <h1 className='title'>@{data.username}</h1>
           <p>total runs: {stats.count}</p>
           <p>
             total kilometers: {parseInt(stats.distance / 1000).toLocaleString()}
@@ -37,10 +34,8 @@ function Header() {
         </header>
       ) : (
         <header>
-          <img
-            src='https://pbs.twimg.com/profile_images/1036876528657813504/WLq-d1X9_400x400.jpg'
-            alt='profile'></img>
-          <h1 className='title'>kick</h1>
+          <img src='https://i.ibb.co/jvcRkBz/cadenz.png' alt='profile'></img>
+          <h1 className='title'>cadenz loading...</h1>
           <p className='loading'>strava stats loading...</p>
         </header>
       )}

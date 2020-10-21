@@ -46,13 +46,12 @@ $font2: #2c2c2c;
 .tab {
   width: 100%;
   color: $font;
-  display: flex;
   &:last-of-type > .tab-label {
     border-bottom: 0px;
   }
   &-label {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     padding: 1em;
     background: $midnight;
     border-bottom: 1px solid $font;
@@ -81,6 +80,7 @@ summary::-webkit-details-marker {
 summary::after {
   content: "❯";
   font-size: 1em;
+  float: right;
 }
 details[open] summary:after {
   transform: rotate(90deg);
