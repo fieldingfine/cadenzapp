@@ -64,6 +64,9 @@ $font2: #2c2c2c;
     background: $font;
     transition: all 0.35s;
     color: $font2;
+    &:last-of-type {
+      padding-bottom: 0.1em;
+    }
   }
 }
 

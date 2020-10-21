@@ -140,7 +140,7 @@ export async function getTraining() {
     .then((response) => {
       return response.data;
     })
-    .catch((error) => console.log(error))
+    .catch((error) => console.log("get getActivities error"))
     //use ids to get detail of each run//
     .then(async (data) => {
       await Promise.all(
@@ -160,7 +160,7 @@ export async function getTraining() {
       );
       return data;
     })
-    .catch((error) => console.log(error, "get training error"));
+    .catch((error) => console.log(error, "get getTraining error"));
 
   return response;
 }

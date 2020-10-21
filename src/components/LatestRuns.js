@@ -43,7 +43,8 @@ const LatestRuns = () => {
             <strong>AVG HR:</strong> {runs.average_heartrate.toFixed(0)} bpm
           </p>
           <p>
-            <strong>Shoes:</strong> {runs.gear.name}
+            <strong>Shoes:</strong>{" "}
+            {runs.gear !== undefined ? runs.gear.name : "n/a"}
           </p>
           <p
             className='stravabtn'

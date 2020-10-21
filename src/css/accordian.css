@@ -64,6 +64,9 @@
   transition: all 0.35s;
   color: #2c2c2c;
 }
+.tab-content:last-of-type {
+  padding-bottom: 0.1em;
+}
 
 details > summary {
   list-style: none;

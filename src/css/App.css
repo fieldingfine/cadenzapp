@@ -64,6 +64,9 @@
   transition: all 0.35s;
   color: #2c2c2c;
 }
+.tab-content:last-of-type {
+  padding-bottom: 0.1em;
+}
 
 details > summary {
   list-style: none;
@@ -123,6 +126,12 @@ section {
     margin: 2em 1em 2em 1em;
   }
 }
+.loading {
+  padding: 10px 0 10px;
+  text-align: center;
+  opacity: 0.5;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -136,11 +145,6 @@ header img {
 header p {
   text-align: center;
   margin: 0px;
-}
-header .loading {
-  padding: 10px 0 10px;
-  text-align: center;
-  opacity: 0.5;
 }
 
 body {

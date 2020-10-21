@@ -1,3 +1,9 @@
+.loading {
+  padding: 10px 0 10px;
+  text-align: center;
+  opacity: 0.5;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -10,10 +16,5 @@ header {
   & p {
     text-align: center;
     margin: 0px;
-  }
-  & .loading {
-    padding: 10px 0 10px;
-    text-align: center;
-    opacity: 0.5;
   }
 }

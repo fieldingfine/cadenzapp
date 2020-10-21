@@ -13,7 +13,7 @@ function App() {
     if (response.data.fields.exp < Date.now()) {
       getRefresh();
     }
-  });
+  }, []);
 
   return (
     <div className='container'>
