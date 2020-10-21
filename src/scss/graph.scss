@@ -12,3 +12,16 @@
     border-bottom: 2px solid #4056a1;
   }
 }
+
+.recharts-surface {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .recharts-surface {
+    width: 90%;
+  }
+  .graphnav:nth-of-type(-n + 2) {
+    margin-bottom: 2em;
+  }
+}

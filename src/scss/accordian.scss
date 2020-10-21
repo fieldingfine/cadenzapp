@@ -46,6 +46,7 @@ $font2: #2c2c2c;
 .tab {
   width: 100%;
   color: $font;
+  display: flex;
   &:last-of-type > .tab-label {
     border-bottom: 0px;
   }

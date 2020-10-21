@@ -10,6 +10,7 @@ function Header() {
     getAthlete().then((response) => {
       if (response !== undefined) {
         setData(response.data);
+        console.log(response.data);
       }
     });
 

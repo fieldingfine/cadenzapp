@@ -111,9 +111,7 @@ const postRefresh = (response) => {
 export async function getAthlete() {
   await getTokens();
   const response = await axios
-    .get(
-      `https://www.strava.com/api/v3/athletes/3118597/stats?access_token=${auth}`
-    )
+    .get(`https://www.strava.com/api/v3/athletes/3118597?access_token=${auth}`)
     .catch((error) => console.log(error, "get getAthlete error"));
 
   return response;

@@ -44,6 +44,7 @@
 .tab {
   width: 100%;
   color: rgba(255, 255, 255, 0.6);
+  display: flex;
 }
 .tab:last-of-type > .tab-label {
   border-bottom: 0px;
