@@ -15,7 +15,9 @@ function App() {
         <LatestRuns />
         <Races />
       </section>
-      <section>{/* <Graph /> */}</section>
+      <section>
+        <Graph />
+      </section>
     </div>
   );
 }
