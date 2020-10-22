@@ -7,8 +7,6 @@ function Header() {
 
   //get data for header stats//
   useEffect(() => {
-    console.log("header");
-
     getAthlete().then((response) => {
       if (response !== undefined) {
         setData(response.data);

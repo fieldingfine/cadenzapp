@@ -5,7 +5,6 @@ const Races = () => {
   const [races, setRaces] = useState([]);
   //get data for races//
   useEffect(() => {
-    console.log("races");
     fetchRaces().then((response) => {
       setRaces(response);
     });

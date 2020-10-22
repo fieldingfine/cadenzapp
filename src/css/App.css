@@ -151,9 +151,14 @@ header p {
 }
 
 .load {
-  height: 90%;
+  height: 80%;
 }
 
+@media only screen and (max-width: 600px) {
+  .load {
+    height: 100%;
+  }
+}
 body {
   font-family: monospace;
   font-size: 12px;
