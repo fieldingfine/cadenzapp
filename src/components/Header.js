@@ -24,7 +24,7 @@ function Header() {
     <>
       {Object.keys(stats).length > 0 && Object.keys(data).length > 0 ? (
         <header>
-          <img src='https://i.ibb.co/jvcRkBz/cadenz.png' alt='profile'></img>
+          <img src='/logo.png' alt='profile'></img>
           <h1 className='title'>@{data.username}</h1>
           <p>total runs: {stats.count}</p>
           <p>
@@ -34,7 +34,7 @@ function Header() {
         </header>
       ) : (
         <header>
-          <img src='https://i.ibb.co/jvcRkBz/cadenz.png' alt='profile'></img>
+          <img src='/logo.png' alt='profile'></img>
           <h1 className='title'>cadenz loading...</h1>
           <p className='loading'>strava stats loading...</p>
         </header>

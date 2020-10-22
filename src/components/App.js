@@ -19,7 +19,7 @@ function App() {
     <div className='container'>
       <Header />
       <section>
-        <NextSessions />
+        {/* <NextSessions /> */}
         <LatestRuns />
         <Races />
       </section>
