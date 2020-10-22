@@ -1,6 +1,9 @@
 .container {
   width: 90%;
   margin: auto;
+  &-loading {
+    height: 100vh;
+  }
 }
 
 section {
@@ -13,6 +16,7 @@ section {
 .cbox {
   flex-basis: 350px;
   margin: 3em;
+  min-height: 500px;
 }
 
 .gbox {

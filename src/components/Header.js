@@ -37,8 +37,7 @@ function Header() {
       ) : (
         <header>
           <img src='/logo.png' alt='profile'></img>
-          <h1 className='title'>cadenz loading...</h1>
-          <p className='loading'>strava stats loading...</p>
+          <h1>cadenz loading...</h1>
         </header>
       )}
     </>
