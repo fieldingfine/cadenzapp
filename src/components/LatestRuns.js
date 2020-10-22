@@ -6,6 +6,7 @@ const LatestRuns = () => {
 
   //get data for strava runs//
   useEffect(() => {
+    console.log("latest runs use effect");
     getTraining().then((response) => {
       if (response !== undefined) {
         setActivity(response);

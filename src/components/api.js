@@ -66,6 +66,11 @@ export async function getTokens() {
       refresh = response.data.fields.refresh;
       return response;
     })
+    .then((response) => {
+      if (response.data.fields.exp < Date.now()) {
+        getRefresh();
+      }
+    })
     .catch((error) => console.log(error, "get getTokens error"));
 
   return response;

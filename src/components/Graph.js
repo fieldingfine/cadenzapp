@@ -20,7 +20,7 @@ const Graph = () => {
   useEffect(() => {
     fetchStats().then((response) => {
       setData(response);
-    }, []);
+    });
   }, []);
 
   //change graph data on click//

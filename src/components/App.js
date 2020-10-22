@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import "../css/App.css";
 import Header from "./Header";
 import NextSessions from "./NextSessions";
@@ -9,17 +10,20 @@ import { getTokens, getRefresh } from "./api";
 
 function App() {
   // TOKEN MANAGEMENT FOR STRAVA CALLS //
-  getTokens().then((response) => {
-    if (response.data.fields.exp < Date.now()) {
-      getRefresh();
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log("app use effect");
+  //   getTokens().then((response) => {
+  //     if (response.data.fields.exp < Date.now()) {
+  //       getRefresh();
+  //     }
+  //   });
+  // }, []);
 
   return (
     <div className='container'>
       <Header />
       <section>
-        {/* <NextSessions /> */}
+        <NextSessions />
         <LatestRuns />
         <Races />
       </section>
