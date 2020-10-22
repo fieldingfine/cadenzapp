@@ -18,6 +18,7 @@ const Graph = () => {
 
   //get data for graph//
   useEffect(() => {
+    console.log("graph");
     fetchStats().then((response) => {
       setData(response);
     });

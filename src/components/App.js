@@ -14,7 +14,7 @@ function App() {
       <section>
         <NextSessions />
         <LatestRuns />
-        {/* <Races /> */}
+        <Races />
       </section>
       <section>
         <Graph />

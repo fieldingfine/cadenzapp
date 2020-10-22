@@ -6,6 +6,7 @@ const NextSessions = () => {
 
   //get data for sessions//
   useEffect(() => {
+    console.log("next sessions");
     fetchTraining().then((response) => {
       setPlan(response);
     });
