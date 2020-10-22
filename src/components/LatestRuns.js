@@ -9,9 +9,9 @@ const LatestRuns = () => {
     console.log("latestruns");
 
     getTraining().then((response) => {
-      // if (response !== undefined) {
-      setActivity(response);
-      // }
+      if (response !== undefined) {
+        setActivity(response);
+      }
     });
   }, []);
 
