@@ -23,4 +23,10 @@ header p {
   height: 90%;
 }
 
+@media only screen and (max-width: 600px) {
+  .gbox {
+    width: 80%;
+  }
+}
+
 /*# sourceMappingURL=header.css.map */
