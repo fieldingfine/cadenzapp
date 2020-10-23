@@ -75,13 +75,14 @@ summary::-webkit-details-marker {
 }
 
 summary::after {
-  content: "❯";
+  content: "+";
   font-size: 1em;
   float: right;
 }
 
 details[open] summary:after {
-  transform: rotate(90deg);
+  content: "−";
+  animation: fadein 1s;
 }
 
 summary {
@@ -97,7 +98,6 @@ summary {
 @media only screen and (max-width: 600px) {
   .tab-label {
     line-height: 42px;
-    font-size: 1.1em;
   }
 
   .tab-content {
@@ -179,6 +179,11 @@ h1 {
   font-size: 2em;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 1.1em;
+  }
+}
 .cbox,
 .fbox,
 header,

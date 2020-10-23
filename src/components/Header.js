@@ -34,8 +34,8 @@ function Header() {
         </header>
       ) : (
         <header>
-          <img src='/logo.png' alt='profile'></img>
-          <h1>cadenz loading...</h1>
+          {/* <img src='/logo.png' alt='profile'></img>
+          <h1>cadenz loading...</h1> */}
         </header>
       )}
     </>
