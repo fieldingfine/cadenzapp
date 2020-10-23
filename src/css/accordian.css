@@ -82,7 +82,6 @@ summary::after {
 
 details[open] summary:after {
   content: "−";
-  animation: fadein 1s;
 }
 
 summary {
