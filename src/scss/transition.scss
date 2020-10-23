@@ -3,7 +3,7 @@
 header,
 .tabs,
 body,
-header,
+header > *,
 .nav > div {
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
