@@ -56,7 +56,7 @@ export async function fetchStats() {
 //get tokens for strava from airtable//
 
 export async function getTokens() {
-  const response = await axios
+  await axios
     .get(
       "https://api.airtable.com/v0/appB944pnqlNcrQda/kicktokens/recPtaP7rRYatGese",
       airtableHeader
@@ -66,23 +66,26 @@ export async function getTokens() {
       refresh = response.data.fields.refresh;
       return response;
     })
-    .then((response) => {
+    .then(async (response) => {
       if (response.data.fields.exp < Date.now()) {
-        getRefresh();
+        await getRefresh().then(async (response) => {
+          auth = response.data.access_token;
+          postRefresh(response.data);
+        });
       }
     })
     .catch((error) => console.log(error, "get getTokens error"));
 
-  return response;
+  return auth;
 }
 
 export async function getRefresh() {
-  axios
+  const response = await axios
     .post(
       `https://www.strava.com/api/v3/oauth/token?client_id=53708&client_secret=${stravaSecret}&grant_type=refresh_token&refresh_token=${refresh}`
     )
-    .then((response) => postRefresh(response.data))
     .catch((error) => console.log(error, "get fetchStats error"));
+  return response;
 }
 
 const postRefresh = (response) => {
@@ -106,15 +109,12 @@ const postRefresh = (response) => {
       ],
     }),
   };
-  axios(config)
-    .then(getTokens())
-    .catch((error) => console.log(error, "get getRefresh error"));
+  axios(config).catch((error) => console.log(error, "get getRefresh error"));
 };
 
 //get data from strava//
 
 export async function getAthlete() {
-  await getTokens();
   const response = await axios
     .get(`https://www.strava.com/api/v3/athletes/3118597?access_token=${auth}`)
     .catch((error) => console.log(error, "get getAthlete error"));
@@ -123,18 +123,15 @@ export async function getAthlete() {
 }
 
 export async function getAthleteStats() {
-  await getTokens();
   const response = await axios
     .get(
       `https://www.strava.com/api/v3/athletes/3118597/stats?access_token=${auth}`
     )
     .catch((error) => console.log(error, "get getAthleteStats error"));
-
   return response;
 }
 
 export async function getTraining() {
-  await getTokens();
   //get data ids of last runs//
   const response = axios
     .get("https://www.strava.com/api/v3/athlete/activities?per_page=10", {

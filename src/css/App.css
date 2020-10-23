@@ -94,6 +94,16 @@ summary {
   /* Opera */
 }
 
+@media only screen and (max-width: 600px) {
+  .tab-label {
+    line-height: 42px;
+    font-size: 1.1em;
+  }
+
+  .tab-content {
+    min-height: 4em;
+  }
+}
 .container {
   width: 90%;
   margin: auto;

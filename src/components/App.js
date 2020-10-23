@@ -5,11 +5,13 @@ import NextSessions from "./NextSessions";
 import LatestRuns from "./LatestRuns";
 import Races from "./Races";
 import Graph from "./Graph";
+import { getTokens } from "./api";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    getTokens();
     setTimeout(() => {
       setLoading(false);
     }, 4000);
