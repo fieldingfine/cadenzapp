@@ -3,10 +3,16 @@ import { fetchRaces } from "./api";
 
 const Races = () => {
   const [races, setRaces] = useState([]);
+  const [error, setError] = useState(false);
+
   //get data for races//
   useEffect(() => {
     fetchRaces().then((response) => {
-      setRaces(response);
+      if (response.status === 200) {
+        setRaces(response.data.records);
+      } else {
+        setError(true);
+      }
     });
   }, []);
 
@@ -43,7 +49,7 @@ const Races = () => {
 
   return (
     <>
-      {Object.keys(races).length > 0 ? (
+      {error ? (
         <div className='cbox'>
           <div className='tabtitle'>
             <span className='tabicon' role='img' aria-label='race flag'>
@@ -52,7 +58,7 @@ const Races = () => {
             <p className='tabtitle'>race results</p>
             <p className='tabsubtitle'>(last 10 races)</p>
           </div>
-          <div className='tabs races'>{raceTable}</div>
+          <div className='tabs races'>races load error</div>
         </div>
       ) : (
         <div className='cbox'>
@@ -63,9 +69,7 @@ const Races = () => {
             <p className='tabtitle'>race results</p>
             <p className='tabsubtitle'>(last 10 races)</p>
           </div>
-          <div className='tabs-loading'>
-            <p>latest races loading...</p>
-          </div>
+          <div className='tabs races'>{raceTable}</div>
         </div>
       )}
     </>

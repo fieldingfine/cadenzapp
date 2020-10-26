@@ -15,11 +15,24 @@ const Graph = () => {
   const [graph, setGraph] = useState("weight (kg)");
   const [domain, setDomain] = useState([59, 63]);
   const [color, setColor] = useState("#4056A1");
+  const [error, setError] = useState(false);
 
   //get data for graph//
   useEffect(() => {
     fetchStats().then((response) => {
-      setData(response);
+      if (response.status === 200) {
+        setData(
+          response.data.records.map((item) => ({
+            date: item.fields.date,
+            "weight (kg)": item.fields.weight,
+            "fitness (v02)": item.fields.fitness,
+            "booze (units)": item.fields.booze,
+            "load (km)": item.fields.load,
+          }))
+        );
+      } else {
+        setError(true);
+      }
     });
   }, []);
 
@@ -45,77 +58,85 @@ const Graph = () => {
   };
   return (
     <>
-      <div className='gbox'>
-        <div className='nav'>
-          <div
-            className={graph === "weight (kg)" ? "graphnav active" : "graphnav"}
-            onClick={() => {
-              handleClick("weight (kg)");
-            }}>
-            <span className='tabicon' role='img' aria-label='scales'>
-              ⚖️
-            </span>
-            <p>weight tracker</p>
-          </div>
-          <div
-            className={
-              graph === "fitness (v02)" ? "graphnav active" : "graphnav"
-            }
-            onClick={() => {
-              handleClick("fitness (v02)");
-            }}>
-            <span className='tabicon' role='img' aria-label='heart'>
-              💜
-            </span>
-            <p>fitness tracker</p>
-          </div>
-          <div
-            className={
-              graph === "booze (units)" ? "graphnav active" : "graphnav"
-            }
-            onClick={() => {
-              handleClick("booze (units)");
-            }}>
-            <span className='tabicon' role='img' aria-label='beer'>
-              🍺
-            </span>
-            <p>booze tracker</p>
-          </div>
-          <div
-            className={graph === "load (km)" ? "graphnav active" : "graphnav"}
-            onClick={() => {
-              handleClick("load (km)");
-            }}>
-            <span className='tabicon' role='img' aria-label='up down'>
-              ↕️
-            </span>
-            <p>load tracker</p>
-          </div>
+      {error ? (
+        <div className='gbox'>
+          <p>graph load error</p>
         </div>
+      ) : (
+        <div className='gbox'>
+          <div className='nav'>
+            <div
+              className={
+                graph === "weight (kg)" ? "graphnav active" : "graphnav"
+              }
+              onClick={() => {
+                handleClick("weight (kg)");
+              }}>
+              <span className='tabicon' role='img' aria-label='scales'>
+                ⚖️
+              </span>
+              <p>weight tracker</p>
+            </div>
+            <div
+              className={
+                graph === "fitness (v02)" ? "graphnav active" : "graphnav"
+              }
+              onClick={() => {
+                handleClick("fitness (v02)");
+              }}>
+              <span className='tabicon' role='img' aria-label='heart'>
+                💜
+              </span>
+              <p>fitness tracker</p>
+            </div>
+            <div
+              className={
+                graph === "booze (units)" ? "graphnav active" : "graphnav"
+              }
+              onClick={() => {
+                handleClick("booze (units)");
+              }}>
+              <span className='tabicon' role='img' aria-label='beer'>
+                🍺
+              </span>
+              <p>booze tracker</p>
+            </div>
+            <div
+              className={graph === "load (km)" ? "graphnav active" : "graphnav"}
+              onClick={() => {
+                handleClick("load (km)");
+              }}>
+              <span className='tabicon' role='img' aria-label='up down'>
+                ↕️
+              </span>
+              <p>load tracker</p>
+            </div>
+          </div>
 
-        <ResponsiveContainer width={"100%"} height={300} className='graph'>
-          <LineChart
-            data={data}
-            margin={{
-              top: 50,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}>
-            <XAxis dataKey='date' stroke='white' />
-            <YAxis type='number' domain={domain} stroke='white' />
-            <Tooltip />
-            <Legend />
-            <Line
-              type='monotone'
-              dataKey={graph}
-              stroke={color}
-              strokeWidth={3}
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+          <ResponsiveContainer width={"100%"} height={300} className='graph'>
+            <LineChart
+              data={data}
+              margin={{
+                top: 50,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}>
+              <XAxis dataKey='date' stroke='white' />
+              <YAxis type='number' domain={domain} stroke='white' />
+              <Tooltip />
+              <Legend />
+              <Line
+                type='monotone'
+                dataKey={graph}
+                stroke={color}
+                strokeWidth={3}
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </>
   );
 };

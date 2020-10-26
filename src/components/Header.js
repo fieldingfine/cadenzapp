@@ -4,25 +4,37 @@ import { getAthlete, getAthleteStats } from "./api";
 function Header() {
   const [stats, setStats] = useState([]);
   const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
 
   //get data for header stats//
   useEffect(() => {
     getAthlete().then((response) => {
-      if (response !== undefined) {
+      if (response.status === 200) {
         setData(response.data);
+      } else {
+        setError(true);
       }
     });
 
     getAthleteStats().then((response) => {
-      if (response !== undefined) {
+      if (response.status === 200) {
         setStats(response.data.all_run_totals);
+      } else {
+        setError(true);
       }
     });
   }, []);
 
   return (
     <>
-      {Object.keys(stats).length > 0 && Object.keys(data).length > 0 ? (
+      {error ? (
+        <header>
+          <img src='/logo.png' alt='profile'></img>
+          <h1 className='title'>cadenz app</h1>
+          <p>strava load error</p>
+          <p></p>
+        </header>
+      ) : (
         <header>
           <img src='/logo.png' alt='profile'></img>
           <h1 className='title'>@{data.username}</h1>
@@ -31,13 +43,6 @@ function Header() {
             total kilometers: {parseInt(stats.distance / 1000).toLocaleString()}
             km
           </p>
-        </header>
-      ) : (
-        <header>
-          <img src='/logo.png' alt='profile'></img>
-          <h1 className='title'></h1>
-          <p></p>
-          <p></p>
         </header>
       )}
     </>

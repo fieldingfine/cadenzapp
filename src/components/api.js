@@ -20,9 +20,11 @@ export async function fetchTraining() {
       "https://api.airtable.com/v0/appCxNHOlPKoOiFeE/training/?sort%5B0%5D%5Bfield%5D=date",
       airtableHeader
     )
-    .catch((error) => console.log(error, "get fetchTraining error"));
+    .catch((error) => {
+      return error.response;
+    });
 
-  return response.data.records;
+  return response;
 }
 
 export async function fetchRaces() {
@@ -31,8 +33,11 @@ export async function fetchRaces() {
       "https://api.airtable.com/v0/app51Ub4aBrwWISd5/races/?view=Grid%20view",
       airtableHeader
     )
-    .catch((error) => console.log(error, "get fetchRaces error"));
-  return response.data.records;
+    .catch((error) => {
+      return error.response;
+    });
+
+  return response;
 }
 
 export async function fetchStats() {
@@ -41,15 +46,9 @@ export async function fetchStats() {
       "https://api.airtable.com/v0/appmvdwUHwS2I0QDd/Table%201?&view=Grid%20view",
       airtableHeader
     )
-    .then((response) =>
-      response.data.records.map((item) => ({
-        date: item.fields.date,
-        "weight (kg)": item.fields.weight,
-        "fitness (v02)": item.fields.fitness,
-        "booze (units)": item.fields.booze,
-        "load (km)": item.fields.load,
-      }))
-    );
+    .catch((error) => {
+      return error.response;
+    });
   return response;
 }
 
@@ -117,8 +116,9 @@ const postRefresh = (response) => {
 export async function getAthlete() {
   const response = await axios
     .get(`https://www.strava.com/api/v3/athletes/3118597?access_token=${auth}`)
-    .catch((error) => console.log(error, "get getAthlete error"));
-
+    .catch((error) => {
+      return error.response;
+    });
   return response;
 }
 
@@ -127,7 +127,9 @@ export async function getAthleteStats() {
     .get(
       `https://www.strava.com/api/v3/athletes/3118597/stats?access_token=${auth}`
     )
-    .catch((error) => console.log(error, "get getAthleteStats error"));
+    .catch((error) => {
+      return error.response;
+    });
   return response;
 }
 
@@ -160,7 +162,9 @@ export async function getTraining() {
       );
       return data;
     })
-    .catch((error) => console.log(error, "get getTraining error"));
+    .catch((error) => {
+      return error.response;
+    });
 
   return response;
 }

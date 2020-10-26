@@ -27,6 +27,10 @@ header p {
   .gbox {
     width: 80%;
   }
+
+  .load {
+    height: 80%;
+  }
 }
 
 /*# sourceMappingURL=header.css.map */

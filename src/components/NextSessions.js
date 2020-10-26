@@ -3,11 +3,16 @@ import { fetchTraining } from "./api";
 
 const NextSessions = () => {
   const [plan, setPlan] = useState([]);
+  const [error, setError] = useState(false);
 
   //get data for sessions//
   useEffect(() => {
     fetchTraining().then((response) => {
-      setPlan(response);
+      if (response.status === 200) {
+        setPlan(response.data.records);
+      } else {
+        setError(true);
+      }
     });
   }, []);
 
@@ -36,7 +41,7 @@ const NextSessions = () => {
 
   return (
     <>
-      {Object.keys(plan).length > 0 ? (
+      {error ? (
         <div className='cbox'>
           <div className='tabtitle'>
             <span className='tabicon' role='img' aria-label='tick'>
@@ -45,7 +50,7 @@ const NextSessions = () => {
             <p>next sessions</p>
             <p>(next 10 days)</p>
           </div>
-          <div className='tabs'>{tabLinks}</div>
+          <div className='tabs'>next sessions load error</div>
         </div>
       ) : (
         <div className='cbox'>
@@ -56,9 +61,7 @@ const NextSessions = () => {
             <p>next sessions</p>
             <p>(next 10 days)</p>
           </div>
-          <div className='tabs-loading'>
-            <p>next sessions loading...</p>
-          </div>
+          <div className='tabs'>{tabLinks}</div>
         </div>
       )}
     </>

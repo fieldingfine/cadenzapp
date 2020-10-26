@@ -167,6 +167,10 @@ header p {
   .gbox {
     width: 80%;
   }
+
+  .load {
+    height: 80%;
+  }
 }
 body {
   font-family: monospace;

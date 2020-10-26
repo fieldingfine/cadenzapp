@@ -3,12 +3,15 @@ import { getTraining } from "./api";
 
 const LatestRuns = () => {
   const [activity, setActivity] = useState([]);
+  const [error, setError] = useState(false);
 
   //get data for strava runs//
   useEffect(() => {
     getTraining().then((response) => {
-      if (response !== undefined) {
+      if (response.status === 200) {
         setActivity(response);
+      } else {
+        setError(true);
       }
     });
   }, []);
@@ -60,7 +63,7 @@ const LatestRuns = () => {
 
   return (
     <>
-      {Object.keys(activity).length > 0 ? (
+      {error ? (
         <div className='cbox'>
           <div className='tabtitle'>
             <span className='tabicon' role='img' aria-label='tick'>
@@ -69,7 +72,7 @@ const LatestRuns = () => {
             <p className='tabtitle'>previous sessions</p>
             <p className='tabsubtitle'>(last 10 sessions)</p>
           </div>
-          <div className='tabs'>{tabContent}</div>
+          <p>strava load error</p>
         </div>
       ) : (
         <div className='cbox'>
@@ -81,7 +84,7 @@ const LatestRuns = () => {
             <p className='tabsubtitle'>(last 10 sessions)</p>
           </div>
           <div className='tabs-loading'>
-            <p>strava latest runs loading...</p>
+            <div className='tabs'>{tabContent}</div>
           </div>
         </div>
       )}
