@@ -8,8 +8,9 @@ const LatestRuns = () => {
   //get data for strava runs//
   useEffect(() => {
     getTraining().then((response) => {
-      if (response.status === 200) {
-        setActivity(response);
+      console.log(response);
+      if (response[1] === 200) {
+        setActivity(response[0]);
       } else {
         setError(true);
       }
@@ -83,9 +84,7 @@ const LatestRuns = () => {
             <p className='tabtitle'>previous sessions</p>
             <p className='tabsubtitle'>(last 10 sessions)</p>
           </div>
-          <div className='tabs-loading'>
-            <div className='tabs'>{tabContent}</div>
-          </div>
+          <div className='tabs'>{tabContent}</div>
         </div>
       )}
     </>

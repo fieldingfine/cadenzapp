@@ -134,15 +134,16 @@ export async function getAthleteStats() {
 }
 
 export async function getTraining() {
-  //get data ids of last runs//
+  let status;
   const response = axios
     .get("https://www.strava.com/api/v3/athlete/activities?per_page=10", {
       headers: { Authorization: "Bearer " + auth },
     })
     .then((response) => {
+      status = response.status;
       return response.data;
     })
-    .catch((error) => console.log("get getActivities error"))
+    .catch((error) => console.log(error))
     //use ids to get detail of each run//
     .then(async (data) => {
       await Promise.all(
@@ -155,12 +156,13 @@ export async function getTraining() {
               { headers: { Authorization: "Bearer " + auth } }
             )
             .then((response) => {
+              status = response.status;
               array[index] = { ...response.data };
             })
-            .catch((error) => console.log(error, "tis me"));
+            .catch((error) => console.log(error.response));
         })
       );
-      return data;
+      return [data, status];
     })
     .catch((error) => {
       return error.response;
