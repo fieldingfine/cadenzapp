@@ -30,7 +30,7 @@ function App() {
           <Header />
           <section>
             <NextSessions />
-            {/* <LatestRuns /> */}
+            <LatestRuns />
             <Races />
           </section>
           <section>
